@@ -263,15 +263,15 @@ if (paygResourceCell.getCellType() == CellType.NUMERIC) {
             if (grantQuota == 0 ){
               System.out.println("Invalid grant Quota at row " + (row.getRowNum() + 1));
             }
-
+              // Validate the grant unit
             Cell grantUnitCell = row.getCell(11);
             String grantUnit = dataFormatter.formatCellValue(grantUnitCell);
-            if (!grantUnit.equals("SECONDS") || !grantUnit.equals("MINUTES") || !grantUnit.equals("HOURS") ||
-              !grantUnit.equals("DAYS") || !grantUnit.equals("BYTES") || !grantUnit.equals("KBYTES") ||
-              !grantUnit.equals("MBYTES") || !grantUnit.equals("GBYTES") || !grantUnit.equals("NONE")) {
+            if (!grantUnit.equals("SECONDS") && !grantUnit.equals("MINUTES") && !grantUnit.equals("HOURS") &&
+            !grantUnit.equals("DAYS") && !grantUnit.equals("BYTES") && !grantUnit.equals("KBYTES") &&
+            !grantUnit.equals("MBYTES") && !grantUnit.equals("GBYTES") && !grantUnit.equals("NONE")) {
                 System.out.println("Invalid grant Unit at row " + (row.getRowNum() + 1));
-
-              }
+                System.exit(0);
+        }
       }
     }
       
